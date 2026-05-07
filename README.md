@@ -1,7 +1,7 @@
 # 🛠️ OX Cloner - Discord Server Cloner
 
 ![Version](https://img.shields.io/badge/version-1.1.3-white?style=for-the-badge)
-![Tech](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
+![Tech](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)
 ![Design](https://img.shields.io/badge/Design-Brutalist-white?style=for-the-badge)
 
 **OX Cloner** is a professional cloning engine with a modern brutalist interface, designed to replicate Discord servers down to the last pixel. It combines security, speed, and ease of use to take server management to the next level.
