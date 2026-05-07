@@ -56,7 +56,7 @@
 
 ## 🛠️ Technical Overview
 
-- **Framework**: Next.js 14 (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Discord Lib**: Eris
 - **Styling**: Vanilla CSS (Custom Brutalist Design System)
 - **API Security**: Token validation & Admin permission checks
