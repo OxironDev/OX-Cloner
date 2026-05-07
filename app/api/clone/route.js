@@ -23,14 +23,25 @@ export async function POST(request) {
   const encoder = new TextEncoder();
   const stream = new ReadableStream({
     async start(controller) {
+      let isClosed = false;
+
       const send = (data) => {
-        controller.enqueue(encoder.encode(`data: ${JSON.stringify(data)}\n\n`));
+        if (!isClosed) {
+          try {
+            controller.enqueue(encoder.encode(`data: ${JSON.stringify(data)}\n\n`));
+          } catch (e) {
+            isClosed = true;
+          }
+        }
       };
 
       // Timeout logic
       const timeoutId = setTimeout(() => {
-        send({ error: 'TIMEOUT' });
-        controller.close();
+        if (!isClosed) {
+          send({ error: 'TIMEOUT' });
+          isClosed = true;
+          controller.close();
+        }
       }, GLOBAL_TIMEOUT_MS);
 
       try {
@@ -45,11 +56,21 @@ export async function POST(request) {
       } catch (err) {
         send({ error: err.message });
       } finally {
-        clearTimeout(timeoutId); // Cancel timeout if finished early
-        activeClones--;
-        console.log(`Clone finished. Active clones: ${activeClones}`);
-        controller.close();
+        clearTimeout(timeoutId);
+        if (!isClosed) {
+          isClosed = true;
+          activeClones--;
+          console.log(`Clone finished. Active clones: ${activeClones}`);
+          try { controller.close(); } catch (e) {}
+        } else {
+          // If already closed by timeout, we still need to decrement activeClones
+          activeClones--;
+          console.log(`Clone finished (already closed). Active clones: ${activeClones}`);
+        }
       }
+    },
+    cancel() {
+      console.log("Client disconnected, closing stream.");
     }
   });
 
