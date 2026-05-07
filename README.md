@@ -54,14 +54,6 @@
 
 ---
 
-## 📸 Screenshots
-
-| Modern Dashboard | Live Log System |
-| :---: | :---: |
-| ![Dashboard Preview](https://via.placeholder.com/400x250?text=Premium+UI) | ![Logs Preview](https://via.placeholder.com/400x250?text=Live+Logs) |
-
----
-
 ## 🛠️ Technical Overview
 
 - **Framework**: Next.js 14 (App Router)
