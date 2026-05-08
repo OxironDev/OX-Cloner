@@ -1,6 +1,6 @@
 # 🛠️ OX Cloner - Discord Server Cloner
 
-![Version](https://img.shields.io/badge/version-1.4.0-white?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.4.1-white?style=for-the-badge)
 ![Tech](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)
 ![Design](https://img.shields.io/badge/Design-Brutalist-white?style=for-the-badge)
 
