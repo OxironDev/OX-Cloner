@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 
-const locales = ['tr', 'en', 'es', 'fr', 'de', 'pt', 'it'];
-const defaultLocale = 'tr';
+const locales = ['tr', 'en', 'es', 'fr', 'de', 'pt', 'it', 'ru', 'ja', 'ar', 'id'];
+const defaultLocale = 'en';
 
-export function middleware(request) {
+export function proxy(request) {
   // Check if there is any supported locale in the pathname
   const { pathname } = request.nextUrl;
-  
+
   // Exclude API routes, static files, and Next.js internal paths
   if (
     pathname.startsWith('/api/') ||
@@ -25,14 +25,14 @@ export function middleware(request) {
   // Get locale from cookie if exists
   let locale = defaultLocale;
   const cookieLocale = request.cookies.get('oxiron_lang')?.value;
-  
+
   if (cookieLocale && locales.includes(cookieLocale)) {
     locale = cookieLocale;
   } else {
     // Basic accept-language matching
     const acceptLanguage = request.headers.get('accept-language') || '';
     const preferredLocales = acceptLanguage.split(',').map(lang => lang.split(';')[0].split('-')[0].trim());
-    
+
     for (const prefLocale of preferredLocales) {
       if (locales.includes(prefLocale)) {
         locale = prefLocale;
