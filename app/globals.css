@@ -671,7 +671,17 @@ footer {
   }
 
   .footer-links {
-    gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 25px;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .footer-links a {
+    font-size: 0.65rem;
+    white-space: nowrap;
   }
 
   .copyright {
