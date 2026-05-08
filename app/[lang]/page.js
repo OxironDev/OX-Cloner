@@ -1,11 +1,15 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { translations } from '@/lib/translations';
 
 export default function Home() {
-  const [lang, setLang] = useState('tr');
-  const [t, setT] = useState(translations.tr);
+  const params = useParams();
+  const router = useRouter();
+  const lang = params?.lang || 'tr';
+  const t = translations[lang] || translations.tr;
   const [isLangOpen, setIsLangOpen] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -26,28 +30,10 @@ export default function Home() {
   const [showToken, setShowToken] = useState(false);
   const logRef = useRef(null);
 
-  // Language detection & Persistence
-  useEffect(() => {
-    const savedLang = localStorage.getItem('oxiron_lang');
-    if (savedLang && translations[savedLang]) {
-      handleLangChange(savedLang);
-    } else {
-      const userLang = navigator.language || navigator.userLanguage;
-      if (userLang.startsWith('es')) handleLangChange('es');
-      else if (userLang.startsWith('fr')) handleLangChange('fr');
-      else if (userLang.startsWith('de')) handleLangChange('de');
-      else if (userLang.startsWith('pt')) handleLangChange('pt');
-      else if (userLang.startsWith('it')) handleLangChange('it');
-      else if (userLang.startsWith('en')) handleLangChange('en');
-      else handleLangChange('tr');
-    }
-  }, []);
-
   const handleLangChange = (newLang) => {
-    setLang(newLang);
-    setT(translations[newLang]);
     setIsLangOpen(false);
-    localStorage.setItem('oxiron_lang', newLang);
+    document.cookie = `oxiron_lang=${newLang}; path=/; max-age=31536000`;
+    router.push(`/${newLang}`);
   };
 
   const fetchInfo = async () => {
@@ -315,7 +301,16 @@ export default function Home() {
         )}
       </div>
 
-      <footer>{t.footer}</footer>
+      <footer>
+        <div className="footer-links">
+          <Link href={`/${lang}/about`}>{t.navAbout}</Link>
+          <Link href={`/${lang}/guides`}>{t.navGuides}</Link>
+          <Link href={`/${lang}/privacy`}>{t.navPrivacy}</Link>
+          <Link href={`/${lang}/terms`}>{t.navTerms}</Link>
+          <Link href={`/${lang}/contact`}>{t.navContact}</Link>
+        </div>
+        <div className="copyright">{t.footer}</div>
+      </footer>
     </main>
   );
 }
