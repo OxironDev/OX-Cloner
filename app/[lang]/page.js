@@ -10,7 +10,6 @@ export default function Home() {
   const router = useRouter();
   const lang = params?.lang || 'tr';
   const t = translations[lang] || translations.tr;
-  const [isLangOpen, setIsLangOpen] = useState(false);
 
   const [formData, setFormData] = useState({
     userToken: '',
@@ -30,11 +29,6 @@ export default function Home() {
   const [showToken, setShowToken] = useState(false);
   const logRef = useRef(null);
 
-  const handleLangChange = (newLang) => {
-    setIsLangOpen(false);
-    document.cookie = `oxiron_lang=${newLang}; path=/; max-age=31536000`;
-    router.push(`/${newLang}`);
-  };
 
   const fetchInfo = async () => {
     if (!formData.userToken || !formData.sourceGuildId || !formData.targetGuildId) return;
@@ -147,24 +141,6 @@ export default function Home() {
 
   return (
     <main>
-      <div className="lang-selector">
-        <div className={`custom-select ${isLangOpen ? 'open' : ''}`}>
-          <div className="select-trigger" onClick={() => setIsLangOpen(!isLangOpen)}>
-            <img src={`https://flagcdn.com/w40/${lang === 'en' ? 'us' : lang === 'ar' ? 'sa' : lang === 'ja' ? 'jp' : lang}.png`} alt={lang} className="flag-img" />
-            <span>{lang.toUpperCase()}</span>
-            <span className="arrow"></span>
-          </div>
-          {isLangOpen && (
-            <div className="select-options">
-              {['tr', 'en', 'es', 'fr', 'de', 'pt', 'it', 'ru', 'ja', 'ar', 'id'].map((l) => (
-                <div key={l} className="option" onClick={() => handleLangChange(l)}>
-                  <img src={`https://flagcdn.com/w40/${l === 'en' ? 'us' : l === 'ar' ? 'sa' : l === 'ja' ? 'jp' : l}.png`} alt={l} className="flag-img" /> {l.toUpperCase()}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
 
       <div className="container">
         <header>
@@ -267,15 +243,15 @@ export default function Home() {
               </div>
 
               <div className="checkbox-group">
-                <input 
-                  type="checkbox" 
-                  id="fastMode" 
-                  checked={fastMode} 
+                <input
+                  type="checkbox"
+                  id="fastMode"
+                  checked={fastMode}
                   onChange={(e) => {
                     const isFast = e.target.checked;
                     setFastMode(isFast);
                     setFormData(prev => ({ ...prev, rateLimitDelay: isFast ? 500 : 1000 }));
-                  }} 
+                  }}
                 />
                 <label htmlFor="fastMode" style={{ color: fastMode ? '#ffffff' : 'var(--accent)' }}>
                   {t.fastMode}

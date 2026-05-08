@@ -53,7 +53,7 @@ export default function ContactPage() {
     <main>
       <div className="container content-page">
         <header>
-          <h1>{t.contactTitle}</h1>
+          <h1 style={{ textAlign: 'center' }}>{t.contactTitle}</h1>
         </header>
 
         <div className="text-content" style={{ textAlign: 'center' }}>

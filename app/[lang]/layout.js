@@ -1,5 +1,6 @@
 import "../globals.css";
 import { translations } from "@/lib/translations";
+import HeaderIsland from "../components/HeaderIsland";
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
@@ -42,7 +43,10 @@ export default async function RootLayout({ children, params }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
       </head>
-      <body>{children}</body>
+      <body>
+        <HeaderIsland />
+        {children}
+      </body>
     </html>
   );
 }
