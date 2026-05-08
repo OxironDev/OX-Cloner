@@ -351,8 +351,8 @@ button:disabled {
   padding: 6px 8px 6px 35px;
   display: flex;
   align-items: center;
-  width: 900px;
-  max-width: 95%;
+  width: 940px;
+  max-width: 96%;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -635,9 +635,9 @@ footer {
 
   .header-island {
     top: 15px;
-    width: 92%;
+    width: 94%;
     min-width: unset;
-    max-width: 95%;
+    max-width: 96%;
     padding: 4px 6px 4px 20px;
     gap: 5px;
   }
