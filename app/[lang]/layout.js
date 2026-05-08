@@ -20,13 +20,17 @@ export async function generateMetadata({ params }) {
         'de': '/de',
         'pt': '/pt',
         'it': '/it',
+        'ru': '/ru',
+        'ja': '/ja',
+        'ar': '/ar',
+        'id': '/id',
       },
     },
   };
 }
 
 export async function generateStaticParams() {
-  return ['tr', 'en', 'es', 'fr', 'de', 'pt', 'it'].map((lang) => ({ lang }));
+  return ['tr', 'en', 'es', 'fr', 'de', 'pt', 'it', 'ru', 'ja', 'ar', 'id'].map((lang) => ({ lang }));
 }
 
 export default async function RootLayout({ children, params }) {

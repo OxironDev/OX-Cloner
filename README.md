@@ -18,7 +18,7 @@
   - **Pre-Flight Check**: Validates Token and Administrator permissions before starting.
   - **Smart Skip**: Automatically skips problematic steps (after 3 consecutive errors) and continues the process.
 - **📱 Ultra-Responsive Design**: A sleek, eye-pleasing brutalist UI that works perfectly on both desktop and mobile devices.
-- **🌍 7 Language Support**: Global accessibility with TR, EN, ES, FR, DE, PT, IT support.
+- **🌍 11 Language Support**: Global accessibility with TR, EN, ES, FR, DE, PT, IT, RU, JA, AR, ID support.
 - **📡 Live Log System**: Terminal-style log screen to monitor every step in real-time.
 
 ---

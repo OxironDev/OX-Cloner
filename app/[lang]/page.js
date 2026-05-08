@@ -150,15 +150,15 @@ export default function Home() {
       <div className="lang-selector">
         <div className={`custom-select ${isLangOpen ? 'open' : ''}`}>
           <div className="select-trigger" onClick={() => setIsLangOpen(!isLangOpen)}>
-            <img src={`https://flagcdn.com/w40/${lang === 'en' ? 'us' : lang}.png`} alt={lang} className="flag-img" />
+            <img src={`https://flagcdn.com/w40/${lang === 'en' ? 'us' : lang === 'ar' ? 'sa' : lang === 'ja' ? 'jp' : lang}.png`} alt={lang} className="flag-img" />
             <span>{lang.toUpperCase()}</span>
             <span className="arrow"></span>
           </div>
           {isLangOpen && (
             <div className="select-options">
-              {['tr', 'en', 'es', 'fr', 'de', 'pt', 'it'].map((l) => (
+              {['tr', 'en', 'es', 'fr', 'de', 'pt', 'it', 'ru', 'ja', 'ar', 'id'].map((l) => (
                 <div key={l} className="option" onClick={() => handleLangChange(l)}>
-                  <img src={`https://flagcdn.com/w40/${l === 'en' ? 'us' : l === 'de' ? 'de' : l}.png`} alt={l} className="flag-img" /> {l.toUpperCase()}
+                  <img src={`https://flagcdn.com/w40/${l === 'en' ? 'us' : l === 'ar' ? 'sa' : l === 'ja' ? 'jp' : l}.png`} alt={l} className="flag-img" /> {l.toUpperCase()}
                 </div>
               ))}
             </div>
