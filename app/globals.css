@@ -532,6 +532,23 @@ footer {
     display: inline-block !important;
     font-size: 0.7rem;
   }
+
+  footer {
+    gap: 15px;
+    padding-bottom: 80px;
+  }
+
+  .footer-links {
+    gap: 12px;
+  }
+
+  .copyright {
+    font-size: 0.5rem;
+    letter-spacing: 1.5px;
+    line-height: 1.6;
+    text-align: center;
+    padding: 0 15px;
+  }
 }
 
 @media (max-width: 480px) {
